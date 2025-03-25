@@ -4,12 +4,9 @@ import Navbar from "./components/Navbar"
 import { useDispatch } from 'react-redux'
 import authService from "./appwrite/auth"
 import { login, logout } from './store/authSlice'
-import ItemCard from './components/ItemCard'
-import LoginForm from './components/LoginForm'
-import SignUpFrom from './components/SignUpForm'
+
 import Footer from './components/Footer'
-import Infopage from './components/Infopage'
-import PostForm from './components/post-form/PostForm'
+
 import { Outlet, useAsyncError } from 'react-router'
 import ErrorPage from './components/ErrorPage'
 import CircleProgress from './components/CircleProgress'
