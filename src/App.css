@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide horizontal scrollbar but allow scrolling */
+.hide-scrollbar {
+  -ms-overflow-style:none; /* For Internet Explorer */
+  scrollbar-width: 2px; /* For Firefox */
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Disable vertical scrolling */
+  cursor: pointer;
+}
+
+/* For Webkit Browsers (Chrome, Safari, Edge) */
+.hide-scrollbar::-webkit-scrollbar {
+  height: 3px; /* Hide horizontal scrollbar completely */
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background: gray; /* Hide the thumb */
+  
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+  background: gainsboro; /* Hide the track */
+}
+
+
+
+
