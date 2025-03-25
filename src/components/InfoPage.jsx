@@ -1,40 +1,38 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
-import { useNavigate,useParams,Link } from 'react-router';
-import { useSelector } from 'react-redux';
-import service from '../appwrite/config';
-import CircleProgress from './CircleProgress';
-import BtnDialog from './BtnDialog';
-import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
-function Infopage() {
-  const status=useSelector((state)=>state.auth.status)
-  const userData = useSelector((state) => state.auth.userData)
+import { useEffect, useState } from "react";
+import { useNavigate, useParams, Link } from "react-router";
+import { useSelector } from "react-redux";
+import service from "../appwrite/config";
+import CircleProgress from "./CircleProgress";
+import BtnDialog from "./BtnDialog";
+import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+export default function Infopage() {
+  const status = useSelector((state) => state.auth.status);
+  const userData = useSelector((state) => state.auth.userData);
   const [post, setPost] = useState(null);
-      const navigate = useNavigate();
-      const { slug } = useParams();
-      useEffect(() =>{
-          if (slug) {
-               service.getPost(slug).then((res) => {
-                  if (res) {
-                    console.log(res)
-                    setPost(res)
-                  }
-              })
-          }
-          else {
-              navigate('/')
-          }
-      }, [slug, navigate])
+  const navigate = useNavigate();
+  const { slug } = useParams();
+  useEffect(() => {
+    if (slug) {
+      service.getPost(slug).then((res) => {
+        if (res) {
+          console.log(res);
+          setPost(res);
+        }
+      });
+    } else {
+      navigate("/");
+    }
+  }, [slug, navigate]);
   const isAuthor = post && userData ? post.userId === userData.$id : false;
 
   const handleDelete = () => {
     service.deletePost(post.$id).then((res) => {
       if (res) {
-        post.images.map((image)=>service.deleteFile(image))
-        navigate("/")
+        post.images.map((image) => service.deleteFile(image));
+        navigate("/");
       }
-    })
-  }
+    });
+  };
 
   return post ? (
     <>
@@ -139,5 +137,3 @@ function Infopage() {
     <CircleProgress />
   );
 }
-
-export default Infopage
