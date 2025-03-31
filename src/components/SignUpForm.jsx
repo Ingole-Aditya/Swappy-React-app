@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useAsyncError, useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 import authService from "../appwrite/auth";
 import { login as storeLogin } from "../store/authSlice";
 import { Link } from "react-router";
@@ -13,12 +13,13 @@ function SignUpForm() {
   const [loading,setLoading]=useState(false)
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState(null);
+  const [msg, setMsg] = useState(null);
   const navigate = useNavigate();
   const signup = async (data) => {
     console.log(data)
     setError("");
     try {
-      setLoading(true)
+      setMsg("Verification email sent to your email address. Please verify your email to login.");
       const session = await authService.createAccount(data);
 
       if (session) {
@@ -30,23 +31,30 @@ function SignUpForm() {
     } catch (error) {
       setLoading(false)
       setError(error.message);
+      setMsg(null)
     }
   };
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-screen  flex-1 flex-col justify-center px-6  lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-
           {error && (
-            <Alert severity="error" onClose={()=>setError('')}>{error}</Alert>
+            <Alert severity="error" onClose={() => setError("")}>
+              {error}
+            </Alert>
+          )}
+          {msg && (
+            <Alert severity="success" onClose={() => setMsg("")}>
+              {msg}
+            </Alert>
           )}
           <img alt="Your Company" src={logo} className="mx-auto h-14 w-auto" />
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+          <h2 className="mt-2 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Sign up to your account
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-10 bg-white  p-5 box-content shadow-md rounded-md outline outline-1  outline-gray-100 sm:mx-auto sm:w-full sm:max-w-sm">
           <form onSubmit={handleSubmit(signup)} className="space-y-6">
             <div>
               <label
@@ -141,7 +149,7 @@ function SignUpForm() {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
+          <p className="mt-7 text-center text-sm/6 text-gray-500">
             Already have an account?{" "}
             <Link
               to="/login"
@@ -150,7 +158,7 @@ function SignUpForm() {
               Sign in
             </Link>
           </p>
-          {loading ? <CircleProgress/>:null}
+          {loading ? <CircleProgress /> : null}
         </div>
       </div>
     </>

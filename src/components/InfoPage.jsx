@@ -5,6 +5,7 @@ import service from "../appwrite/config";
 import CircleProgress from "./CircleProgress";
 import BtnDialog from "./BtnDialog";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import "../App.css";
 export default function Infopage() {
   const status = useSelector((state) => state.auth.status);
   const userData = useSelector((state) => state.auth.userData);
@@ -36,7 +37,7 @@ export default function Infopage() {
 
   return post ? (
     <>
-      <div className="h-fit w-3/4 outline outline-1 pt-2 pb-10 px-5 text-slate-700 outline-slate-300 justify-self-center max-lg:h-fit">
+      <div className="h-fit bg-white w-3/4 outline outline-1 pt-2 pb-10 px-5 text-slate-700 outline-slate-300 justify-self-center max-lg:h-fit">
         <h1 className=" font-semibold  text-md max-lg:text-sm mb-3 ">
           {post.title}
         </h1>
@@ -75,7 +76,8 @@ export default function Infopage() {
             <h1 className="text-2xl max-lg:text-xl  font-semibold">
               Expecting: {post.expectation}
             </h1>
-            <h2 className="font-bold text-sm my-5">
+            <h2 className="font-semibold hover:cursor-pointer py-0.5 bg-gray-200 inline-block px-2 rounded-md text-sm my-5"
+            onClick={()=>{navigate(`/category/${post.category}`);}}>
               {post.category
                 .replace(/-/g, " ") // Replace hyphens with spaces
                 .replace(/\b\w/g, (char) => char.toUpperCase())}
@@ -117,7 +119,7 @@ export default function Infopage() {
                 </div>
               ) : (
                 <Link to={`https://wa.me/${post.phoneno}`} target="_blank">
-                  <button className="w-full max-lg:text-sm bg-indigo-600 text-white font-semibold p-2 rounded-md text-xl mt-1 hover:bg-indigo-500">
+                  <button className="w-full max-lg:text-sm  bg-indigo-600 text-white font-semibold p-2 rounded-md text-xl mt-2 hover:bg-indigo-500">
                     Start chat
                   </button>
                 </Link>

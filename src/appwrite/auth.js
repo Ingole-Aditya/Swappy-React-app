@@ -13,7 +13,10 @@ class AuthService {
             const acc=await this.account.create(ID.unique(), email, password, name)
             if (acc) {
                 //call login methon
-                return this.login({email,password})
+                await this.login({email,password})
+                const promise = await this.account.createVerification("https://swappy-orcin.vercel.app//verify");
+                console.log(promise)
+                //working now make verifcation page
             }
             else {
                 return null     
@@ -21,6 +24,36 @@ class AuthService {
         } catch (error) {
             console.log("Error at creatAccount at Auth:: ",error)
             throw error
+        }
+    }
+
+    async verify() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const secret = urlParams.get("secret");
+        const userId = urlParams.get("userId");
+
+        const promise = await this.account.updateVerification(userId, secret);
+    }
+
+    async forgotPassword( email ) {
+        try {
+            await this.account.createRecovery(email,'https://swappy-orcin.vercel.app//reset')
+        } catch (e) {
+            console.log("error ata Forgotpassword at auth:: ", e)
+            throw e
+        }
+    }
+
+    async resetPassword(password) {
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const secret = urlParams.get("secret");
+            const userId = urlParams.get("userId");
+            await this.account.updateRecovery(userId,secret,password)
+        }
+        catch (e) {
+            console.log("error ata resetpassword at auth:: ", e);
+            throw e;
         }
     }
 
@@ -37,11 +70,10 @@ class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            throw error 
             console.log("Error at getCurrentUser at Auth:: ", error);
-            return false
+            throw error 
         }
-        return null   //if noting will happend
+        
     }
 
     async logout() {  //for log out

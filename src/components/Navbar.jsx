@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import logo from '../assets/logos/logo tranparent.png'
 import { useSelector } from 'react-redux'; 
-import { Link, NavLink, useNavigate } from 'react-router';
+import { Link, NavLink, useMatch, useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux'; 
 import { logout } from '../store/authSlice';
 import authService from '../appwrite/auth';
@@ -12,6 +12,7 @@ import BtnDialog from './BtnDialog';
 
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 function Navbar() {
+  const param=useParams()
   const status = useSelector((state) => state.auth.status);
   const [loading,setLoading]=useState(false)
   const [isFocus, setisFocus] = useState(false)
@@ -71,7 +72,7 @@ function Navbar() {
               type="text"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  handleSearch;
+                  handleSearch();
                 }
               }}
               value={searchText}
@@ -84,7 +85,7 @@ function Navbar() {
               onFocus={() => setisFocus(true)}
               onBlur={() => setisFocus(false)}
             ></input>
-            <button  >
+            <button>
               <svg
                 onClick={handleSearch}
                 className=" size-6 lg:hidden  mt-0.5  fill-slate-400 cursor-pointer hover:fill-slate-500"
@@ -221,7 +222,7 @@ function Navbar() {
           <li className="list-none">
             <NavLink
               to="/category/:cloth"
-              className={({ isActive }) =>
+              className={({ isActive }) => 
                 `${isActive ? "bg-gray-200" : "bg-white"} `
               }
             >
@@ -282,7 +283,7 @@ function Navbar() {
             <NavLink
               to="category/:books-&-stationery"
               className={({ isActive }) =>
-                `${isActive ? "bg-gray-200" : "bg-white"} `
+                `${isActive ? "bg-gray-200"  : "bg-white"} `
               }
             >
               <div className="h-fit w-fit bg-white font-semibold p-1.5 rounded-md hover:bg-gray-200 cursor-pointer text-nowrap">

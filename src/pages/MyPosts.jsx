@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ItemCard from "../components/ItemCard";
 import CircleProgress from "../components/CircleProgress";
 import ErrorPage from "../components/ErrorPage";
-
+import "../App.css";
 function MyPosts() {
   const [posts, setPosts] = React.useState(null);
   const [postLength, setPostLength] = React.useState(0);
@@ -60,7 +60,7 @@ function MyPosts() {
   }
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 grid-back">
       <div className="text-2xl pl-10 font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl">
         <h1 className="text-start border-b py-2 px-2 rounded-md">My Posts</h1>
       </div>

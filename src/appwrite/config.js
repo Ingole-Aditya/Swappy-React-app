@@ -48,8 +48,8 @@ class Service {
         }
       );
     } catch (error) {
-      throw error;
       console.log("Error at creatPost at config:: ", error);
+      throw error;
     }
   }
   

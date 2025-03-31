@@ -5,6 +5,7 @@ import ItemCard from "../components/ItemCard";
 import ErrorPage from "../components/ErrorPage";
 import CircleProgress from "../components/CircleProgress";
 import { useSelector } from "react-redux";
+import "../App.css";
 
 function CategorySort() {
   const [posts, setPosts] = React.useState(null);
@@ -49,7 +50,7 @@ function CategorySort() {
   }
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 grid-back">
       <div className="text-2xl pl-10 font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl">
         <h1 className="text-start border-b py-2 px-2 rounded-md">
           {category

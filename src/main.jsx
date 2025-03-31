@@ -14,6 +14,9 @@ import AuthLayout from './components/layout/AuthLayout.jsx'
 import Post from './pages/Post.jsx'
 import CategroySort from './pages/CategroySort.jsx'
 import SearchItems from './pages/SearchItems.jsx'
+import Verifiaction from './components/Verifiaction.jsx'
+import ForgotPassword from './components/ForgotPassword.jsx'
+import ResetPassword from './components/ResetPassword.jsx'
 
 const router = createBrowserRouter([
   {
@@ -94,6 +97,18 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "/verify",
+    element: <Verifiaction />,
+  },
+  {
+    path: "/forgotpass",
+    element: <ForgotPassword />,
+  },
+  {
+    path: "/reset",
+    element: <ResetPassword />,
   },
 ]);
 

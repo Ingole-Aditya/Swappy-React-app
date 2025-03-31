@@ -8,6 +8,7 @@ import { Link } from 'react-router'
 import logo from '../assets/logos/logo tranparent.png'
 import CircleProgress from './CircleProgress'
 import { Alert } from '@mui/material'
+import "../App.css";
 function LoginForm() {
     const [loading,setLoading]=useState(false)
     const dispatch = useDispatch()
@@ -34,18 +35,25 @@ function LoginForm() {
     }
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-screen flex-1 flex-col grid-back justify-center px-6  align-middle lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img alt="Your Company" src={logo} className="mx-auto h-14 w-auto" />
           {error && (
-            <Alert severity='error' onClose={()=>{setError('')}}>{error}</Alert>
+            <Alert
+              severity="error"
+              onClose={() => {
+                setError("");
+              }}
+            >
+              {error}
+            </Alert>
           )}
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+          <h2 className="mt-2 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-10 bg-white  p-5 box-content shadow-md rounded-md outline outline-1  outline-gray-100 sm:mx-auto sm:w-full sm:max-w-sm">
           <form onSubmit={handleSubmit(login)} className="space-y-6">
             <div>
               <label
@@ -102,7 +110,14 @@ function LoginForm() {
                 />
               </div>
             </div>
-
+            <div className="text-sm flex justify-end">
+              <Link
+                to="/forgotpass"
+                className="font-semibold  text-indigo-600 hover:text-indigo-500"
+              >
+                Forgot password?
+              </Link>
+            </div>
             <div>
               <button
                 type="submit"
@@ -113,7 +128,7 @@ function LoginForm() {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
+          <p className="mt-5 text-center text-sm/6 text-gray-500">
             Don't have an account?{" "}
             <Link
               to="/signup"
@@ -121,7 +136,7 @@ function LoginForm() {
             >
               Sign up
             </Link>
-            {loading ? <CircleProgress/>:null}
+            {loading ? <CircleProgress /> : null}
           </p>
         </div>
       </div>

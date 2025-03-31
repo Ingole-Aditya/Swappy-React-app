@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 function Footer() {
   return (
     <>
-      <div className="h-20  w-full text-slate-700 flex outline outline-1 outline-slate-400">
+      <div className="h-20 relative bottom-0  w-full text-slate-700 flex outline outline-1 outline-slate-400">
         <div className="text-sm w-1/2 flex items-center lg:p-0 pl-5">
           © 2025 Swappy, Inc. All rights reserved.
         </div>

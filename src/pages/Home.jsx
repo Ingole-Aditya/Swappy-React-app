@@ -4,6 +4,7 @@ import ItemCard from '../components/ItemCard';
 import CircleProgress from '../components/CircleProgress';
 import ErrorPage from '../components/ErrorPage';
 import { useSelector } from 'react-redux';
+import '../App.css'
 function Home() {
   const [posts, setPosts] = React.useState(null);
   const [postLength, setPostLength] = React.useState(0);
@@ -44,9 +45,9 @@ function Home() {
   }
 
   return (
-    <div className="mb-5">
-      <div className="text-2xl pl-10 font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl">
-        <h1 className="text-start border-b py-2 px-2 rounded-md">New Swaps</h1>
+    <div className="mb-5 bg-[#F9FAFB] grid-back " >
+      <div className="text-2xl pl-4 box-content font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl">
+        <h1 className="text-start  border-b-2  py-2  px-2 ">New Swaps</h1>
       </div>
 
       {postLength > 0 ? (

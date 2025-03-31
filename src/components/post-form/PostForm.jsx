@@ -46,6 +46,7 @@ function PostForm() {
     
     let fileIds
     try {
+      data.phoneno = '91' + data.phoneno
       // Create an array of promises for file uploads
       const uploadPromises = data.images
         .map((image) => {
