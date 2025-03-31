@@ -1,5 +1,6 @@
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
+import { login } from "../store/authSlice";
 
 class AuthService { 
     client = new Client();
@@ -14,10 +15,9 @@ class AuthService {
             if (acc) {
                 //call login methon
                 await this.login({email,password})
-                const promise = await this.account.createVerification(
-                "https://swappy-orcin.vercel.app/verify"
-                );
-                console.log(promise)
+                // const promise = await this.account.createVerification("http://localhost:5173/verify");
+                // console.log(promise)
+                // await this.logout()
                 //working now make verifcation page
             }
             else {
@@ -41,7 +41,7 @@ class AuthService {
         try {
             await this.account.createRecovery(
               email,
-              "https://swappy-orcin.vercel.app/reset"
+              "http://localhost:5173/reset"
             );
         } catch (e) {
             console.log("error ata Forgotpassword at auth:: ", e)

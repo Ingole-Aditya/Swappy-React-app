@@ -110,14 +110,14 @@ function LoginForm() {
                 />
               </div>
             </div>
-            <div className="text-sm flex justify-end">
+            {/* <div className="text-sm flex justify-end">
               <Link
                 to="/forgotpass"
                 className="font-semibold  text-indigo-600 hover:text-indigo-500"
               >
                 Forgot password?
               </Link>
-            </div>
+            </div> */}
             <div>
               <button
                 type="submit"
