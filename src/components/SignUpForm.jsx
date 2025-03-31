@@ -19,7 +19,7 @@ function SignUpForm() {
     console.log(data)
     setError("");
     try {
-      setMsg("Verification email sent to your email address. Please verify your email to login.");
+      // setMsg("Verification email sent to your email address. Please verify your email to login.");
       const session = await authService.createAccount(data);
 
       if (session) {

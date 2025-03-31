@@ -14,11 +14,10 @@ class AuthService {
             const acc=await this.account.create(ID.unique(), email, password, name)
             if (acc) {
                 //call login methon
-                await this.login({email,password})
+                return await this.login({email,password})
                 // const promise = await this.account.createVerification("http://localhost:5173/verify");
                 // console.log(promise)
                 // await this.logout()
-                //working now make verifcation page
             }
             else {
                 return null     
