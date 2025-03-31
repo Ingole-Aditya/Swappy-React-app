@@ -94,7 +94,7 @@ const router = createBrowserRouter([
     path: "/reset",
     element: <ResetPassword />,
   },
-]);
+],{basename:'/'});
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
