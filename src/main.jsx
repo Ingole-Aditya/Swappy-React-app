@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
-import { createBrowserRouter, RouterProvider } from 'react-router'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx' 
 import Signup from './pages/SignUp.jsx'
@@ -29,22 +29,6 @@ const router = createBrowserRouter([
             <Home />
         ),
       },
-      // {
-      //   path: "/login",
-      //   element: (
-      //     <AuthLayout authentication={false}>
-      //       <Login />
-      //     </AuthLayout>
-      //   ),
-      // },
-      // {
-      //   path: "/signup",
-      //   element: (
-      //     <AuthLayout authentication={false}>
-      //       <Signup />
-      //     </AuthLayout>
-      //   ),
-      // },
       {
         path: "/my-posts",
         element: (

@@ -15,7 +15,7 @@ class AuthService {
                 //call login methon
                 await this.login({email,password})
                 const promise = await this.account.createVerification(
-                  "https://swappy-orcin.vercel.app/verify"
+                "https://swappy-orcin.vercel.app/verify"
                 );
                 console.log(promise)
                 //working now make verifcation page
