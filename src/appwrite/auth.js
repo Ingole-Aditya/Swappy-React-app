@@ -14,7 +14,9 @@ class AuthService {
             if (acc) {
                 //call login methon
                 await this.login({email,password})
-                const promise = await this.account.createVerification("https://swappy-orcin.vercel.app/verify");
+                const promise = await this.account.createVerification(
+                  "https://swappy-orcin.vercel.app/verify"
+                );
                 console.log(promise)
                 //working now make verifcation page
             }
@@ -37,7 +39,10 @@ class AuthService {
 
     async forgotPassword( email ) {
         try {
-            await this.account.createRecovery(email,'https://swappy-orcin.vercel.app/reset')
+            await this.account.createRecovery(
+              email,
+              "https://swappy-orcin.vercel.app/reset"
+            );
         } catch (e) {
             console.log("error ata Forgotpassword at auth:: ", e)
             throw e
