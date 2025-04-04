@@ -8,7 +8,6 @@ function ForgotPassword() {
     const [error, setError] = useState(null)
     const [msg, setMsg] = useState(null);
     const submit = (data) => {
-        console.log(data.email)
         try {
             authService.forgotPassword(data.email)
             setMsg("A reset link has been sent to your email.");

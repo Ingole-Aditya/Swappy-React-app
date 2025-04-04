@@ -16,7 +16,6 @@ export default function Infopage() {
     if (slug) {
       service.getPost(slug).then((res) => {
         if (res) {
-          console.log(res);
           setPost(res);
         }
       });
@@ -43,7 +42,7 @@ export default function Infopage() {
         </h1>
 
         {/* images */}
-        <div className="h-3/5 w-full flex overflow-auto hide-scrollbar gap-3 mb-5">
+        <div className="h-3/5 w-full flex justify-center overflow-auto hide-scrollbar gap-3 mb-5">
           {post.images.map((image) => (
             <img
               key={image}

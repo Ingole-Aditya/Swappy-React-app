@@ -10,7 +10,6 @@ import Login from './pages/Login.jsx'
 import Signup from './pages/SignUp.jsx'
 import UploadPost from './pages/UploadPost.jsx'
 import MyPosts from './pages/MyPosts.jsx'
-import AuthLayout from './components/layout/AuthLayout.jsx'
 import Post from './pages/Post.jsx'
 import CategroySort from './pages/CategroySort.jsx'
 import SearchItems from './pages/SearchItems.jsx'
@@ -32,44 +31,31 @@ const router = createBrowserRouter([
       {
         path: "/my-posts",
         element: (
-          // <AuthLayout authentication={false}>
-          //   {" "}
           <MyPosts />
         ),
-        // </AuthLayout>
       },
       {
         path: "/upload-post",
         element: (
-          // <AuthLayout authentication={true}>
-          //   {" "}
           <UploadPost />
         ),
-        // </AuthLayout>
       },
       {
         path: "/item/:slug",
         element: (
-          // <AuthLayout authentication>
-          //   {" "}
           <Post />
         ),
-        // </AuthLayout>
       },
       {
         path: "/category/:category",
         element: (
-          // <AuthLayout authentication>
             <CategroySort />
-          // </AuthLayout>
         ),
       },
       {
         path: "/search/:searchText",
         element: (
-        //   <AuthLayout authentication>
             <SearchItems />
-          // </AuthLayout>
         ),
       },
     ],

@@ -4,11 +4,8 @@ import Navbar from "./components/Navbar"
 import { useDispatch } from 'react-redux'
 import authService from "./appwrite/auth"
 import { login, logout } from './store/authSlice'
-
 import Footer from './components/Footer'
-
-import { Outlet, useAsyncError } from 'react-router'
-import ErrorPage from './components/ErrorPage'
+import { Outlet } from 'react-router'
 import CircleProgress from './components/CircleProgress'
 
 function App() {

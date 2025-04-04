@@ -42,7 +42,6 @@ function PostForm() {
   const submit = async (data) => {
     setError('')
     setLoading(true)
-    console.log(data)
     
     let fileIds
     try {
@@ -59,10 +58,8 @@ function PostForm() {
 
       // Wait for all file uploads to complete
       const uploadedFiles = await Promise.all(uploadPromises);
-      console.log("uplodedFIes ",uploadedFiles)
       // Get file IDs from uploaded files
       fileIds = uploadedFiles.map((file) => file.$id);
-      console.log("fileIds ",fileIds)
       // Update data with file IDs
       const postData = {
         ...data,

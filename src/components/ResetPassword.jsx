@@ -11,7 +11,6 @@ function ResetPassword() {
     const [msg, setMsg] = useState(null);
     const navigate=useNavigate()
     const submit = (data) => {
-        console.log(data)
         if (data.newpass == data.confirmpass) {
             setError(null)
             authService.resetPassword(data.confirmpass)

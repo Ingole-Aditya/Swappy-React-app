@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router'
 import service from '../appwrite/config';
 function ItemCard({ post }) {
-  console.log(post)
   return (
     <Link to={`/item/${post.$id}`}>
       <div className="h-96 w-72 box-content ease-in-out bg-white rounded-md outline outline-1  outline-slate-300 hover:shadow-xl transition duration-200 shadow-input  cursor-pointer">

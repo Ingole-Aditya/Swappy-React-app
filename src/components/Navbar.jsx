@@ -31,7 +31,6 @@ function Navbar() {
   }
 
   const handleSearch = () => {
-    console.log("loading")
     if (searchText) {
       navigate(`/search/${searchText}`)
       setSearchText('')
@@ -40,7 +39,7 @@ function Navbar() {
   
   return (
     <>
-      <nav className="w-svw max-md:pt-0 max-md:pl-4 px-5  border lg:px-0 lg:pl-0">
+      <nav className="w-svw box-border max-md:pt-0 max-md:pl-4 px-5  border lg:px-0 lg:pl-0">
         {/* upper layer */}
         <div className="w-full h-16 mt-1 pb-12  px-3 flex justify-between max-md:pr-0 max-md:justify-between lg:gap-5 ">
           <img
