@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router";
 import { useSelector } from "react-redux";
@@ -6,7 +7,8 @@ import CircleProgress from "./CircleProgress";
 import BtnDialog from "./BtnDialog";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import "../App.css";
-export default function Infopage() {
+
+function Infopage() {
   const status = useSelector((state) => state.auth.status);
   const userData = useSelector((state) => state.auth.userData);
   const [post, setPost] = useState(null);
@@ -75,8 +77,12 @@ export default function Infopage() {
             <h1 className="text-2xl max-lg:text-xl  font-semibold">
               Expecting: {post.expectation}
             </h1>
-            <h2 className="font-semibold hover:cursor-pointer py-0.5 bg-gray-200 inline-block px-2 rounded-md text-sm my-5"
-            onClick={()=>{navigate(`/category/${post.category}`);}}>
+            <h2
+              className="font-semibold hover:cursor-pointer py-0.5 bg-gray-200 inline-block px-2 rounded-md text-sm my-5"
+              onClick={() => {
+                navigate(`/category/${post.category}`);
+              }}
+            >
               {post.category
                 .replace(/-/g, " ") // Replace hyphens with spaces
                 .replace(/\b\w/g, (char) => char.toUpperCase())}
@@ -136,5 +142,7 @@ export default function Infopage() {
     </>
   ) : (
     <CircleProgress />
-  );
+  )
 }
+
+export default Infopage
