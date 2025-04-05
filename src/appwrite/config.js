@@ -156,6 +156,17 @@ class Service {
       return false;
     }
   }
+  
+   getFileView(fileID) {
+    try {
+      const file =  this.bucket.getFileView(conf.appwriteBucketId, fileID)
+      return file
+    }
+    catch (e) {
+      console.log("Error at getFileView at cofig:: ", e)
+      throw e
+    }
+  }
 
   getFilePreview(fileId) {
     return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);

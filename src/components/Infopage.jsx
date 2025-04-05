@@ -44,12 +44,14 @@ function Infopage() {
         </h1>
 
         {/* images */}
-        <div className="h-3/5 w-full flex justify-center overflow-auto hide-scrollbar gap-3 mb-5">
-          {post.images.map((image) => (
+        <div className="w-full flex overflow-x-auto hide-scrollbar gap-3 mb-5 p-2">
+          {post.images.map((image, index) => (
             <img
               key={image}
-              src={service.getFilePreview(image)}
-              className=" w-96  max-lg:w-80 max-lg:h-96 object-cover rounded-md"
+              src={service.getFileView(image)}
+              loading="lazy"
+              onLoad={(e) => e.target.classList.remove("blur-md", "scale-105")}
+              className="min-w-80 h-80 max-sm:min-w-60 max-sm:h-60 object-cover rounded-md blur-md scale-105 transition-all duration-700"
             />
           ))}
         </div>
@@ -74,8 +76,9 @@ function Infopage() {
 
           {/* second portion */}
           <div className="p-3 w-1/3 max-lg:w-full">
-            <h1 className="text-2xl max-lg:text-xl  font-semibold">
-              Expecting: {post.expectation}
+            <h1 className="text-2xl text-slate-900 max-lg:text-xl  font-semibold">
+              Expecting:{" "}
+              <span className="text-slate-700">{post.expectation}</span>
             </h1>
             <h2
               className="font-semibold hover:cursor-pointer py-0.5 bg-gray-200 inline-block px-2 rounded-md text-sm my-5"
@@ -142,7 +145,7 @@ function Infopage() {
     </>
   ) : (
     <CircleProgress />
-  )
+  );
 }
 
 export default Infopage

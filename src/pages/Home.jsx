@@ -5,6 +5,8 @@ import CircleProgress from '../components/CircleProgress';
 import ErrorPage from '../components/ErrorPage';
 import { useSelector } from 'react-redux';
 import '../App.css'
+import { motion } from 'motion/react';
+
 function Home() {
   const [posts, setPosts] = React.useState(null);
   const [postLength, setPostLength] = React.useState(0);
