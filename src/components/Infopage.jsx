@@ -39,7 +39,7 @@ function Infopage() {
 
   return post ? (
     <>
-      <div className="h-fit bg-white w-3/4 outline outline-1 pt-2 pb-10 px-5 text-slate-700 outline-slate-300 justify-self-center max-lg:h-fit">
+      <div className="h-fit bg-white w-3/4 max-sm:w-full outline outline-1 pt-2 pb-10 px-5 text-slate-700 outline-slate-300 justify-self-center max-lg:h-fit">
         <h1 className=" font-semibold  text-md max-lg:text-sm mb-3 ">
           {post.title}
         </h1>
@@ -52,7 +52,7 @@ function Infopage() {
               src={service.getFileView(image)}
               loading="lazy"
               onLoad={(e) => e.target.classList.remove("blur-sm", "scale-105")}
-              className="min-w-80 h-80 max-sm:min-w-60 max-sm:h-60 object-cover rounded-md blur-sm scale-105 transition-all duration-700"
+              className="min-w-80 h-80 max-sm:min-w-72 max-sm:h-72 object-cover rounded-md blur-sm scale-105 transition-all duration-700"
             />
           ))}
         </div>
