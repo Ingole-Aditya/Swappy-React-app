@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import service from '../appwrite/config';
 import ItemCard from '../components/ItemCard';
 import CircleProgress from '../components/CircleProgress';
@@ -22,8 +22,8 @@ React.useEffect(() => {
       if (res) {
         setPosts(res.documents);
         setLoading(false)
-        if (location.state?.message) {
-          toast.success(location.state.message);
+        if (location.state?.message  ) {
+          toast.success(location.state.message)
         }
         setPostLength(res.documents.length);
         }

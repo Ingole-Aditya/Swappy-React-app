@@ -15,7 +15,9 @@ class AuthService {
             if (acc) {
                 //call login methon
                 await this.login({email,password})
-                const promise = await this.account.createVerification("http://localhost:5173/verify");
+                const promise = await this.account.createVerification(
+                  "https://swappy-smoky.vercel.app/verify"
+                );
                 await this.logout()
             }
             else {
@@ -39,7 +41,7 @@ class AuthService {
         try {
             await this.account.createRecovery(
               email,
-              "http://localhost:5173/reset"
+              "https://swappy-smoky.vercel.app/reset"
             );
         } catch (e) {
             console.log("error ata Forgotpassword at auth:: ", e)
