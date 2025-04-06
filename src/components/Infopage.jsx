@@ -51,8 +51,8 @@ function Infopage() {
               key={image}
               src={service.getFileView(image)}
               loading="lazy"
-              onLoad={(e) => e.target.classList.remove("blur-md", "scale-105")}
-              className="min-w-80 h-80 max-sm:min-w-60 max-sm:h-60 object-cover rounded-md blur-md scale-105 transition-all duration-700"
+              onLoad={(e) => e.target.classList.remove("blur-sm", "scale-105")}
+              className="min-w-80 h-80 max-sm:min-w-60 max-sm:h-60 object-cover rounded-md blur-sm scale-105 transition-all duration-700"
             />
           ))}
         </div>

@@ -23,8 +23,8 @@ function ItemCard({ post }) {
           src={service.getFileView(post.images[0])}
           alt={post.images[0]}
           loading="lazy"
-          onLoad={(e) => e.target.classList.remove("blur-md", "scale-105")}
-          className=" w-full h-3/4 object-cover rounded-t-md  blur-md scale-105 transition-all duration-700"
+          onLoad={(e) => e.target.classList.remove("blur-sm", "scale-105")}
+          className=" w-full h-3/4 object-cover rounded-t-md  blur-sm scale-105 transition-all duration-700"
         />
         <div className="h-1/4 w-full  flex flex-col gap-0.5 px-2 py-0.5 text-xs font-normal ">
           <p className="font-semibold text-slate-700 text-sm">{post.title}</p>

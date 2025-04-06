@@ -20,19 +20,17 @@ class Service {
     description,
     expectdescription,
     images,
-    status,
     userId,
     category,
-    city,
     state,
+    city,
     phoneno,
-    slug,
   }) {
     try {
       return await this.database.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug,
+        ID.unique(),
         {
           title,
           description,
@@ -42,7 +40,6 @@ class Service {
           state,
           phoneno,
           category,
-          status,
           userId,
           images
         }
@@ -68,12 +65,11 @@ class Service {
     }
   }
 
-  async getAllPosts(queries = [Query.equal("status", "unswapped")]) {
+  async getAllPosts() {
     try {
       return await this.database.listDocuments(
         conf.appwriteDatabaseId,
-        conf.appwriteCollectionId,
-        queries
+        conf.appwriteCollectionId
       );
     } catch (error) {
       console.log("Error at getAllPosts at config:: ", error);
