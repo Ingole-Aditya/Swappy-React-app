@@ -7,13 +7,13 @@ function ForgotPassword() {
     const { register, handleSubmit } = useForm()
     const [error, setError] = useState(null)
     const [msg, setMsg] = useState(null);
-    const submit = (data) => {
+    async function  submit(data){
         try {
-            authService.forgotPassword(data.email)
+            await authService.forgotPassword(data.email)
             setMsg("A reset link has been sent to your email.");
         } catch (e) {
-            setError(e)
             setMsg(null)
+            setError(e.message)
         }
     }
   return (

@@ -5,24 +5,28 @@ import CircleProgress from '../components/CircleProgress';
 import ErrorPage from '../components/ErrorPage';
 import { useSelector } from 'react-redux';
 import '../App.css'
-import { motion } from 'motion/react';
+import { toast, ToastContainer } from 'react-toastify';
+import { useLocation } from 'react-router';
 
 function Home() {
   const [posts, setPosts] = React.useState(null);
   const [postLength, setPostLength] = React.useState(0);
   const [loading, setLoading] = React.useState(true); // To track loading state
   const status = useSelector((state) => state.auth.status);
-
-  React.useEffect(() => {
-    if (status) {
-      // If status is true, we proceed to fetch posts
-      service.getAllPosts()
-        .then((res) => {
-          if (res) {
-            setPosts(res.documents);
-            setLoading(false)
-            setPostLength(res.documents.length);
-          }
+  const location = useLocation();
+React.useEffect(() => {
+  if (status) {
+    // If status is true, we proceed to fetch posts
+    service.getAllPosts()
+    .then((res) => {
+      if (res) {
+        setPosts(res.documents);
+        setLoading(false)
+        if (location.state?.message) {
+          toast.success(location.state.message);
+        }
+        setPostLength(res.documents.length);
+        }
         })
     } else {
       setLoading(false)
@@ -48,6 +52,7 @@ function Home() {
 
   return (
     <div className="mb-5 bg-[#F9FAFB] grid-back " >
+      <ToastContainer/>
       <div className="text-2xl pl-4 box-content font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl">
         <h1 className="text-start  border-b-2  py-2  px-2 ">New Swaps</h1>
       </div>

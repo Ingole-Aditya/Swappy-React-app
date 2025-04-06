@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import CircleProgress from "../CircleProgress";
 import { Alert } from "@mui/material";
 import ImageInputBox from "./ImageInputBox";
+import { toast, ToastContainer } from "react-toastify";
 
 function PostForm() {
   const [  error, setError ] = useState(null); //handling errrors
@@ -73,7 +74,7 @@ function PostForm() {
 
       if (dpPost) {
         setLoading(false);
-        navigate("/");
+        navigate("/",{state:{message:"Swap uploaded successfully"}});
       }
     } catch (error) {
       setLoading(false);
@@ -83,6 +84,7 @@ function PostForm() {
         }
       })
       setError(error.message);
+      toast.error(error.message);
       console.error("Upload error:", error);
     }
   };
@@ -117,16 +119,7 @@ function PostForm() {
           share.
         </p>
 
-        {error && (
-          <Alert
-            severity="error"
-            onClose={() => {
-              setError("");
-            }}
-          >
-            {error}
-          </Alert>
-        )}
+        <ToastContainer/>
 
         {/* title inputbox */}
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">

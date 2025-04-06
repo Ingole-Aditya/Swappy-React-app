@@ -7,6 +7,7 @@ import CircleProgress from "./CircleProgress";
 import BtnDialog from "./BtnDialog";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import "../App.css";
+import { Message } from 'rsuite';
 
 function Infopage() {
   const status = useSelector((state) => state.auth.status);
@@ -31,7 +32,7 @@ function Infopage() {
     service.deletePost(post.$id).then((res) => {
       if (res) {
         post.images.map((image) => service.deleteFile(image));
-        navigate("/");
+        navigate("/",{state:{message:"Swap deleted successfully"}});
       }
     });
   };
